@@ -3,6 +3,7 @@ package com.tanu.shopsaathi.presentation.screen.splashandonboarding
 import android.app.Activity
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.annotation.OptIn
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -43,6 +44,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
+import androidx.media3.common.util.UnstableApi
 import androidx.media3.datasource.DefaultDataSource
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
@@ -143,6 +145,7 @@ fun OnBoardingScreen(navController: NavHostController) {
     }
 }
 
+@OptIn(UnstableApi::class)
 @Composable
 fun ExoPlayerComposable(videoResId: Int) {
     val context = LocalContext.current
