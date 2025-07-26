@@ -56,4 +56,17 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.material3)
+    implementation(libs.material)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)// ExoPlayer
+    implementation(libs.androidx.media3.exoplayer)
+
+    implementation(libs.androidx.foundation)//Horizontal Pager
+    implementation(libs.androidx.media3.ui)
+    implementation(libs.androidx.media3.common)
+
+    implementation(libs.accompanist.pager)
+    implementation(libs.accompanist.pager.indicators)
 }
