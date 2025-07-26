@@ -22,10 +22,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.tanu.shopsaathi" />
+                  <option name="mobileSdkAppId" value="1:800339188622:android:fb0885514779f8549622df" />
+                  <option name="projectId" value="shopsaathi-tanu-08" />
+                  <option name="projectNumber" value="800339188622" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

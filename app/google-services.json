@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "800339188622",
+    "project_id": "shopsaathi-tanu-08",
+    "storage_bucket": "shopsaathi-tanu-08.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:800339188622:android:fb0885514779f8549622df",
+        "android_client_info": {
+          "package_name": "com.tanu.shopsaathi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVW1epbCbodi1b54swQbdq8Pu0qtiPCkQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -10,6 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
 import com.tanu.shopsaathi.R
+import com.tanu.shopsaathi.data.local.PrefKeys
+import com.tanu.shopsaathi.data.local.PreferenceDataStoreModule
 import com.tanu.shopsaathi.presentation.navigation.Screen
 import kotlinx.coroutines.delay
 
@@ -19,8 +21,15 @@ import kotlinx.coroutines.delay
 fun Splash(navController: NavHostController) {
     LaunchedEffect(Unit) {
         delay(2000)
-        navController.navigate(Screen.OnBoarding.route) {
-            popUpTo(Screen.Splash.route) { inclusive = true }
+        if(PreferenceDataStoreModule.getFirstPreference(PrefKeys.IS_LOGGED_IN,false)){
+            navController.navigate(Screen.HomeScreen.route) {
+                popUpTo(Screen.Splash.route) { inclusive = true }
+            }
+        }
+        else {
+            navController.navigate(Screen.OnBoarding.route) {
+                popUpTo(Screen.Splash.route) { inclusive = true }
+            }
         }
     }
     Box(

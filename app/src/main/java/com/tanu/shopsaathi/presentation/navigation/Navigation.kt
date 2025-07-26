@@ -4,6 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.tanu.shopsaathi.presentation.screen.dashboard.HomeScreen
+import com.tanu.shopsaathi.presentation.screen.loginorsignup.LoginScreen
+import com.tanu.shopsaathi.presentation.screen.loginorsignup.SignUpScreen
 import com.tanu.shopsaathi.presentation.screen.splashandonboarding.OnBoardingScreen
 import com.tanu.shopsaathi.presentation.screen.splashandonboarding.Splash
 
@@ -16,6 +19,15 @@ fun Navigation (){
         }
         composable(Screen.OnBoarding.route) {
             OnBoardingScreen(navController = navController)
+        }
+        composable(Screen.HomeScreen.route) {
+            HomeScreen(navController = navController)
+        }
+        composable(Screen.LoginScreen.route) {
+            LoginScreen(navController = navController)
+        }
+        composable(Screen.SignUpScreen.route) {
+            SignUpScreen(navController = navController)
         }
     }
 

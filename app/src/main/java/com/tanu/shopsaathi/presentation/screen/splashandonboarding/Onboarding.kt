@@ -1,6 +1,5 @@
 package com.tanu.shopsaathi.presentation.screen.splashandonboarding
 
-import android.app.Activity
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.annotation.OptIn
@@ -25,46 +24,29 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.input.nestedscroll.NestedScrollSource.Companion.SideEffect
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
-import androidx.core.view.WindowInsetsControllerCompat
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
-import androidx.media3.datasource.DefaultDataSource
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
 import androidx.navigation.NavHostController
 import com.tanu.shopsaathi.R
+import com.tanu.shopsaathi.presentation.navigation.Screen
 import kotlinx.coroutines.launch
 
 @Composable
 fun OnBoardingScreen(navController: NavHostController) {
-    val view = LocalView.current
-    if (!view.isInEditMode) {
-        SideEffect {
-            val window = (view.context as Activity).window
-            window.statusBarColor = com.tanu.shopsaathi.ui.theme.DarkBackground.toArgb()
-            WindowInsetsControllerCompat(window, view).isAppearanceLightStatusBars = false
-            // false means white text/icons
-        }
-    }
-
-    val context = LocalContext.current
     val onboardingTexts = listOf(
         "Welcome to ShopSaathi",
         "Find nearby trusted shops",
@@ -82,7 +64,7 @@ fun OnBoardingScreen(navController: NavHostController) {
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Black)
-            .padding(0.dp,40.dp,0.dp,40.dp)
+            .padding(0.dp, 40.dp, 0.dp, 40.dp)
             .background(Color.White, RectangleShape),
         verticalArrangement = Arrangement.Top
     ) {
@@ -112,7 +94,9 @@ fun OnBoardingScreen(navController: NavHostController) {
         Button(
             onClick = {
                 if (pagerState.currentPage == onboardingTexts.lastIndex) {
-                    navController.navigate("home")
+                    navController.navigate(Screen.LoginScreen.route) {
+                        popUpTo(Screen.OnBoarding.route) { inclusive = true }
+                    }
                 } else {
                     scope.launch {
                         pagerState.animateScrollToPage(pagerState.currentPage + 1)
@@ -151,7 +135,8 @@ fun ExoPlayerComposable(videoResId: Int) {
     val context = LocalContext.current
     val exoPlayer = remember {
         ExoPlayer.Builder(context).build().apply {
-            val mediaItem = MediaItem.fromUri("android.resource://${context.packageName}/$videoResId")
+            val mediaItem =
+                MediaItem.fromUri("android.resource://${context.packageName}/$videoResId")
             setMediaItem(mediaItem)
             prepare()
             playWhenReady = true
@@ -164,7 +149,8 @@ fun ExoPlayerComposable(videoResId: Int) {
             PlayerView(context).apply {
                 player = exoPlayer
                 useController = false
-                resizeMode = androidx.media3.ui.AspectRatioFrameLayout.RESIZE_MODE_ZOOM // CenterCrop style
+                resizeMode =
+                    androidx.media3.ui.AspectRatioFrameLayout.RESIZE_MODE_ZOOM // CenterCrop style
                 layoutParams = FrameLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT
@@ -174,7 +160,7 @@ fun ExoPlayerComposable(videoResId: Int) {
         modifier = Modifier
             .fillMaxWidth()
             .height(240.dp)
-            .padding(0.dp,200.dp,0.dp,20.dp)
+            .padding(0.dp, 200.dp, 0.dp, 20.dp)
     )
 }
 
